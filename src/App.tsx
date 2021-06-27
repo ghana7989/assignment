@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components/macro'
+import AppComponents from './components/layout/Components'
+import Units from './components/layout/Units'
+import {LayoutProvider} from './context/layoutContext'
+import {StoreContextProvider} from './context/storeContext'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<StoreContextProvider>
+			<LayoutProvider>
+				<Container>
+					<Units />
+					<AppComponents />
+				</Container>
+			</LayoutProvider>
+		</StoreContextProvider>
+	)
 }
 
-export default App;
+export const Container = styled.div`
+	width: 100vw;
+	height: 100vh;
+	background-color: #eee;
+	padding: 40px 50px;
+	display: flex;
+	gap: 3rem;
+`
+export default App
