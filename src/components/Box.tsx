@@ -22,8 +22,7 @@ export const Heading = styled.h1`
 `
 
 export const BoxContainer = styled.div`
-	min-width: 20vw;
-	max-width: 25vw;
+	min-width: 100%;
 	padding: 20px;
 	border: 1px solid ${colors.bgGrey};
 	box-shadow: ${colors.boxShadow};

@@ -2,7 +2,7 @@ import Spacer from 'react-spacer'
 import {FC, Fragment, useContext} from 'react'
 import styled from 'styled-components'
 import {StoreContext} from '../context/storeContext'
-import {RoomType} from '../data'
+import {RoomType, UnitType} from '../data'
 import AppInput from './input/Input'
 import {colors} from '../theme'
 import {AiOutlinePlus} from 'react-icons/ai'
@@ -15,13 +15,26 @@ interface RoomProps {
 
 const Room: FC<RoomProps> = ({number = 1, room}) => {
 	let {setStore, store} = useContext(StoreContext)
-	const {setUnit, setVisibility, visibility} = useContext(LayoutContext)
-	// const inputRef = useRef<HTMLInputElement>()
+	const {setUnit, setVisibility, visibility, setComponentData} =
+		useContext(LayoutContext)
+
+	const handleAddComponent = (unit: UnitType, index: number) => {
+		setUnit(unit)
+		setVisibility({
+			...visibility,
+			isUnitVisible: !visibility.isUnitVisible,
+			isComponentVisible: !visibility.isComponentVisible,
+		})
+		setComponentData([
+			...unit.components,
+			{roomIndex: number - 1, unitIndex: index},
+		])
+	}
 
 	return (
 		<RoomContainer>
 			<h3>Room {number}</h3>
-			{room.units.map((unit, index) => {
+			{room.units.map((unit: UnitType, index) => {
 				return (
 					<Fragment key={unit.name}>
 						<AppInput
@@ -38,16 +51,7 @@ const Room: FC<RoomProps> = ({number = 1, room}) => {
 								setStore(store)
 							}}
 						/>
-						<AddComponent
-							onClick={() => {
-								setUnit(unit)
-								setVisibility({
-									...visibility,
-									isUnitVisible: true,
-									isComponentVisible: true,
-								})
-							}}
-						>
+						<AddComponent onClick={() => handleAddComponent(unit, index)}>
 							Add Component(s)
 						</AddComponent>
 					</Fragment>

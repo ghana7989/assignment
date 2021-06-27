@@ -11,7 +11,8 @@ interface AppInputProps {
 	id?: string
 	placeholder?: string
 	label?: string
-	defaultValue?: string
+	defaultValue?: any
+	ref?: any
 }
 
 const AppInput: FC<AppInputProps> = ({
