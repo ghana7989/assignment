@@ -114,14 +114,15 @@ export const data = [
 							{
 								id: 5466033773084672,
 								name: 'Carpenter',
-								item: '',
-								specification: '',
+								item: 'Item 1',
+								specification: 'Spec 1',
 							},
 							{
 								id: 1016591363866624,
 								name: 'Plywood',
-								item: '',
+								item: 'Item 2',
 								rate: 0,
+								specification: 'Spec 2',
 							},
 						],
 						milestones: [

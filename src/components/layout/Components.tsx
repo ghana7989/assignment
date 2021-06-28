@@ -11,7 +11,7 @@ import AppInput from '../input/Input'
 import {AddComponent} from '../Room'
 
 const AppComponents = () => {
-	const {store} = useContext(StoreContext)
+	const {store, setStore} = useContext(StoreContext)
 	const {
 		visibility,
 		setVisibility,
@@ -22,8 +22,8 @@ const AppComponents = () => {
 		setMaterial,
 	} = useContext(LayoutContext)
 	let [total, setTotal] = useState(0)
-	let quantityRef = useRef<number>()
-	let ratesRef = useRef<number>()
+	let quantityRef = useRef<number>(1)
+	let ratesRef = useRef<number>(1)
 
 	console.log('componentData: ', componentData)
 	function handleAddVendorsOrMaterials(
@@ -50,9 +50,9 @@ const AppComponents = () => {
 			<Divider text='Component' />
 			{componentData?.map((component: ComponentType, index: number) => {
 				if (index >= componentData?.length - 1)
-					return <Fragment key={Math.random()}></Fragment>
+					return <Fragment key={component.id}></Fragment>
 				return (
-					<Fragment key={Math.random()}>
+					<Fragment key={component.id}>
 						<textarea
 							rows={7}
 							style={{
@@ -78,42 +78,58 @@ const AppComponents = () => {
 						<div style={{display: 'flex', gap: '10px'}}>
 							<AppInput
 								defaultValue={component.quantity}
+								value={component.quantity}
 								onChange={e => {
 									quantityRef.current = +e.target.value
+									setTotal(ratesRef.current * quantityRef.current)
+
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} = componentData[1]
+										const cloneStore = [...p]
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].quantity = e.target.value
+										return cloneStore
+									})
 								}}
 								name='quantity'
 								label='Quantity'
-								onBlur={e => {
-									const {roomIndex, unitIndex} = componentData[1]
-									store[roomIndex].units[unitIndex].components[index].quantity =
-										e.target.value
-								}}
+								onBlur={e => {}}
 							/>
 							<AppInput
 								defaultValue={component.raise}
+								value={component.raise}
 								onChange={e => {
 									ratesRef.current = +e.target.value
+									setTotal(ratesRef.current * quantityRef.current)
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} = componentData[1]
+										const cloneStore = [...p]
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].raise = e.target.value
+										return cloneStore
+									})
 								}}
-								onBlur={e => {
-									if (ratesRef.current && quantityRef.current)
-										setTotal(ratesRef.current * quantityRef.current)
-									const {roomIndex, unitIndex} = componentData[1]
-									store[roomIndex].units[unitIndex].components[index].raise =
-										e.target.value
-								}}
+								onBlur={e => {}}
 								name='rates'
 								label='Rates'
 							/>
 							<AppInput
-								onChange={() => {}}
+								onChange={e => {
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} = componentData[1]
+										const cloneStore = [...p]
+										store[roomIndex].units[unitIndex].components[index].units =
+											e.target.value
+										return cloneStore
+									})
+								}}
 								name='units'
 								label='Units'
+								value={component.units}
 								defaultValue={component.units}
-								onBlur={e => {
-									const {roomIndex, unitIndex} = componentData[1]
-									store[roomIndex].units[unitIndex].components[index].units =
-										e.target.value
-								}}
+								onBlur={e => {}}
 							/>
 						</div>
 						<div

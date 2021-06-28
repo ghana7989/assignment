@@ -12,7 +12,7 @@ import AppInput from '../input/Input'
 import {AddComponent} from '../Room'
 
 const Milestones = () => {
-	const {store} = useContext(StoreContext)
+	const {store, setStore} = useContext(StoreContext)
 
 	let [milestones, setMilestones] = useState([])
 	const {visibility, componentData} = useContext(LayoutContext)
@@ -34,30 +34,39 @@ const Milestones = () => {
 	)
 		return <></>
 	return (
-		<Box title={`Vendor ${componentData[1].vendorsIndex + 1 }-Milestones`}>
+		<Box title={`Vendor ${componentData[1].vendorsIndex + 1}-Milestones`}>
 			{milestones.map((milestone: MilestoneType, index: number) => {
 				return (
 					<div style={{display: 'flex', gap: '10px'}}>
 						<AppInput
 							defaultValue={milestone.name}
-							onChange={() => {}}
 							name='name'
 							label='Name'
-							onBlur={e => {
-								const {roomIndex, unitIndex, componentIndex} = componentData[1]
-								store[roomIndex].units[unitIndex].components[
-									componentIndex
-								].milestones[index].name = e.target.value
+							onChange={e => {
+								setStore((p: RoomType[]) => {
+									const {roomIndex, unitIndex, componentIndex} =
+										componentData[1]
+									const cloneStore = [...p]
+									cloneStore[roomIndex].units[unitIndex].components[
+										componentIndex
+									].milestones[index].name = e.target.value
+									return cloneStore
+								})
 							}}
+							onBlur={e => {}}
 						/>
 						<AppInput
 							defaultValue={milestone.percentage}
-							onChange={() => {}}
-							onBlur={e => {
-								const {roomIndex, unitIndex, componentIndex} = componentData[1]
-								store[roomIndex].units[unitIndex].components[
-									componentIndex
-								].milestones[index].percentage = e.target.value
+							onChange={e => {
+								setStore((p: RoomType[]) => {
+									const {roomIndex, unitIndex, componentIndex} =
+										componentData[1]
+									const cloneStore = [...p]
+									cloneStore[roomIndex].units[unitIndex].components[
+										componentIndex
+									].milestones[index].percentage = e.target.value
+									return cloneStore
+								})
 							}}
 							name='percentage'
 							label='Percentage'

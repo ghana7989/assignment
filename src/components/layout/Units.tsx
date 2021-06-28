@@ -12,7 +12,7 @@ const Units = () => {
 	return (
 		<Box title='Add Units'>
 			{store?.map((room: RoomType, index: number) => {
-				return <Room key={Math.random()} number={index + 1} room={room} />
+				return <Room key={room.id} number={index + 1} room={room} />
 			})}
 			<AppButton text='Save' />
 			<Spacer height='10px' />

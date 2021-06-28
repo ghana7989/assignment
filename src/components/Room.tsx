@@ -36,19 +36,19 @@ const Room: FC<RoomProps> = ({number = 1, room}) => {
 			<h3>Room {number}</h3>
 			{room.units.map((unit: UnitType, index) => {
 				return (
-					<Fragment key={unit.name}>
+					<Fragment key={unit.id}>
 						<AppInput
-							key={Math.random() + unit.name}
 							trash
 							label='Unit Name'
 							name={`unit ${number}`}
 							value={unit.name}
 							defaultValue={unit.name}
 							onChange={e => {
-								store[number - 1].units[index].name = e.target.value
-							}}
-							onBlur={() => {
-								setStore(store)
+								setStore((p: RoomType[]) => {
+									const cloneStore = [...p]
+									cloneStore[number - 1].units[index].name = e.target.value
+									return cloneStore
+								})
 							}}
 						/>
 						<AddComponent onClick={() => handleAddComponent(unit, index)}>
