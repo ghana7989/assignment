@@ -135,7 +135,7 @@ const AppComponents = () => {
 									handleComponentData(component, index)
 								}}
 								name='quantity'
-								label='Quantity'
+								label='Qty'
 								onBlur={e => {
 									setStore((p: RoomType[]) => {
 										const {roomIndex, unitIndex} =

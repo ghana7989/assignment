@@ -251,7 +251,7 @@ const VendorsAndMaterial = () => {
 										})
 									}}
 									name='quantity'
-									label='Quantity'
+									label='Qty'
 									onBlur={() => {}}
 								/>
 								<AppInput
