@@ -1,9 +1,14 @@
-import {Fragment, useContext, useRef, useState} from 'react'
+import {nanoid} from 'nanoid'
+import {Fragment, useContext} from 'react'
 import {AiOutlinePlus} from 'react-icons/ai'
 import Spacer from 'react-spacer'
 import {LayoutContext} from '../../context/layoutContext'
 import {StoreContext} from '../../context/storeContext'
-import {ComponentType, RoomType} from '../../data'
+import {
+	ComponentType,
+	RoomType,
+	componentData as dummyComponentData,
+} from '../../data'
 import {colors} from '../../theme'
 import Box from '../Box'
 import Divider from '../Divider'
@@ -21,11 +26,14 @@ const AppComponents = () => {
 		setVendor,
 		setMaterial,
 	} = useContext(LayoutContext)
-	let [total, setTotal] = useState(0)
-	let quantityRef = useRef<number>(1)
-	let ratesRef = useRef<number>(1)
 
 	console.log('componentData: ', componentData)
+	function handleComponentData(component: ComponentType, index: number) {
+		let newComponent = [...componentData]
+		newComponent[componentData.length - 1].componentIndex = index
+		setComponentData([...newComponent])
+		return
+	}
 	function handleAddVendorsOrMaterials(
 		component: ComponentType,
 		index: number,
@@ -35,15 +43,42 @@ const AppComponents = () => {
 			isMaterialVisible: !visibility.isMaterialVisible,
 			isVendorVisible: !visibility.isVendorVisible,
 		})
-		setComponentData(() => {
-			let newComponent = [...componentData]
-			newComponent[1].componentIndex = index
-			return newComponent
-		})
-		setVendor([...component.vendors, {...componentData[1]}])
-		setMaterial([...component.material, {...componentData[1]}])
+		handleComponentData(component, index)
+		setVendor([
+			...component.vendors,
+			{...componentData[componentData.length - 1]},
+		])
+		setMaterial([
+			...component.material,
+			{...componentData[componentData.length - 1]},
+		])
 	}
+	const handleAddComponent = () => {
+		const cloneStore = [...store]
 
+		const {roomIndex, unitIndex} = componentData[componentData.length - 1]
+		let newComponent = {...dummyComponentData}
+		newComponent.id = nanoid()
+		newComponent.vendors.forEach(vendor => {
+			vendor.id = nanoid()
+		})
+		newComponent.material.forEach(m => {
+			m.id = nanoid()
+		})
+		newComponent.milestones.forEach(milestone => {
+			milestone.id = nanoid()
+		})
+		cloneStore[roomIndex].units[unitIndex].components.push(newComponent)
+		//
+		const newComponentData = [...componentData]
+		const temp = componentData[componentData.length - 1]
+		newComponentData.length = componentData.length - 1
+		newComponentData.push(newComponent)
+		newComponentData.push(temp)
+		//
+		setComponentData([...newComponentData])
+		setStore([...cloneStore])
+	}
 	if (!visibility.isComponentVisible || !componentData) return <></>
 	return (
 		<Box title={`${unit.name}-Add Components`}>
@@ -68,7 +103,8 @@ const AppComponents = () => {
 							name='description'
 							defaultValue={component.description}
 							onBlur={e => {
-								const {roomIndex, unitIndex} = componentData[1]
+								const {roomIndex, unitIndex} =
+									componentData[componentData.length - 1]
 								store[roomIndex].units[unitIndex].components[
 									index
 								].description = e.target.value
@@ -80,45 +116,94 @@ const AppComponents = () => {
 								defaultValue={component.quantity}
 								value={component.quantity}
 								onChange={e => {
-									quantityRef.current = +e.target.value
-									setTotal(ratesRef.current * quantityRef.current)
-
+									console.log('component: ', component)
 									setStore((p: RoomType[]) => {
-										const {roomIndex, unitIndex} = componentData[1]
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
 										const cloneStore = [...p]
 										cloneStore[roomIndex].units[unitIndex].components[
 											index
-										].quantity = e.target.value
+										].quantity = +e.target.value
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].total =
+											+e.target.value *
+											cloneStore[roomIndex].units[unitIndex].components[index]
+												.raise
 										return cloneStore
 									})
+									handleComponentData(component, index)
 								}}
 								name='quantity'
 								label='Quantity'
-								onBlur={e => {}}
+								onBlur={e => {
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
+										const cloneStore = [...p]
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].quantity = +e.target.value
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].total =
+											+e.target.value *
+											cloneStore[roomIndex].units[unitIndex].components[index]
+												.raise
+										return cloneStore
+									})
+									handleComponentData(component, index)
+								}}
 							/>
 							<AppInput
 								defaultValue={component.raise}
 								value={component.raise}
 								onChange={e => {
-									ratesRef.current = +e.target.value
-									setTotal(ratesRef.current * quantityRef.current)
+									console.log('component: ', component)
+									console.log('index: ', index)
 									setStore((p: RoomType[]) => {
-										const {roomIndex, unitIndex} = componentData[1]
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
 										const cloneStore = [...p]
 										cloneStore[roomIndex].units[unitIndex].components[
 											index
-										].raise = e.target.value
+										].raise = +e.target.value
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].total =
+											+e.target.value *
+											cloneStore[roomIndex].units[unitIndex].components[index]
+												.quantity
 										return cloneStore
 									})
+									handleComponentData(component, index)
 								}}
-								onBlur={e => {}}
+								onBlur={e => {
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
+										const cloneStore = [...p]
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].raise = +e.target.value
+										cloneStore[roomIndex].units[unitIndex].components[
+											index
+										].total =
+											+e.target.value *
+											cloneStore[roomIndex].units[unitIndex].components[index]
+												.quantity
+										return cloneStore
+									})
+									handleComponentData(component, index)
+								}}
 								name='rates'
 								label='Rates'
 							/>
 							<AppInput
 								onChange={e => {
 									setStore((p: RoomType[]) => {
-										const {roomIndex, unitIndex} = componentData[1]
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
 										const cloneStore = [...p]
 										store[roomIndex].units[unitIndex].components[index].units =
 											e.target.value
@@ -129,7 +214,16 @@ const AppComponents = () => {
 								label='Units'
 								value={component.units}
 								defaultValue={component.units}
-								onBlur={e => {}}
+								onBlur={e => {
+									setStore((p: RoomType[]) => {
+										const {roomIndex, unitIndex} =
+											componentData[componentData.length - 1]
+										const cloneStore = [...p]
+										store[roomIndex].units[unitIndex].components[index].units =
+											e.target.value
+										return cloneStore
+									})
+								}}
 							/>
 						</div>
 						<div
@@ -140,7 +234,14 @@ const AppComponents = () => {
 								justifyContent: 'space-between',
 							}}
 						>
-							<h1>₹{total}</h1>
+							<h1>
+								₹
+								{
+									store[componentData[componentData.length - 1].roomIndex]
+										.units[componentData[componentData.length - 1].unitIndex]
+										.components[index].total
+								}
+							</h1>
 							<AddComponent
 								onClick={() => handleAddVendorsOrMaterials(component, index)}
 							>
@@ -150,7 +251,11 @@ const AppComponents = () => {
 					</Fragment>
 				)
 			})}
-			<AiOutlinePlus size={20} />
+			<AiOutlinePlus
+				style={{cursor: 'pointer'}}
+				onClick={handleAddComponent}
+				size={20}
+			/>
 			<Spacer height={10} />
 		</Box>
 	)

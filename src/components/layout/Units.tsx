@@ -1,5 +1,6 @@
 import {useContext} from 'react'
 import Spacer from 'react-spacer'
+
 import {StoreContext} from '../../context/storeContext'
 import {RoomType} from '../../data'
 import {colors} from '../../theme'

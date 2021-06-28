@@ -2,11 +2,12 @@ import Spacer from 'react-spacer'
 import {FC, Fragment, useContext} from 'react'
 import styled from 'styled-components'
 import {StoreContext} from '../context/storeContext'
-import {RoomType, UnitType} from '../data'
+import {RoomType, unitData, UnitType} from '../data'
 import AppInput from './input/Input'
 import {colors} from '../theme'
 import {AiOutlinePlus} from 'react-icons/ai'
 import {LayoutContext} from '../context/layoutContext'
+import {nanoid} from 'nanoid'
 
 interface RoomProps {
 	number?: number
@@ -30,7 +31,29 @@ const Room: FC<RoomProps> = ({number = 1, room}) => {
 			{roomIndex: number - 1, unitIndex: index},
 		])
 	}
+	function handleAddRoom() {
+		const roomIndex = number - 1
+		const cloneStore = [...store]
+		let newUnitData = {...unitData}
+		newUnitData.id = nanoid()
+		newUnitData.components.forEach(component => {
+			component.id = nanoid()
+			component.vendors.forEach(vendor => {
+				vendor.id = nanoid()
+			})
+			component.material.forEach(m => {
+				m.id = nanoid()
+			})
+			component.milestones.forEach(milestone => {
+				milestone.id = nanoid()
+			})
+			return component
+		})
 
+		cloneStore[roomIndex].units.push(newUnitData)
+		setStore([...cloneStore])
+		return
+	}
 	return (
 		<RoomContainer>
 			<h3>Room {number}</h3>
@@ -57,7 +80,11 @@ const Room: FC<RoomProps> = ({number = 1, room}) => {
 					</Fragment>
 				)
 			})}
-			<AiOutlinePlus size={20} />
+			<AiOutlinePlus
+				style={{cursor: 'pointer'}}
+				onClick={handleAddRoom}
+				size={20}
+			/>
 			<Spacer height={10} />
 		</RoomContainer>
 	)

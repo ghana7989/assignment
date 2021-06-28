@@ -1,5 +1,4 @@
 import {Col, Container, Row} from 'react-grid-system'
-import styled from 'styled-components/macro'
 import AppComponents from './components/layout/Components'
 import Milestones from './components/layout/Milestones'
 import Units from './components/layout/Units'

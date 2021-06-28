@@ -1,88 +1,75 @@
+import {nanoid} from 'nanoid'
+
 export const unitData = {
+	id: nanoid(),
 	name: 'Unit ',
 	components: [
 		{
+			total: 0,
+			id: nanoid(),
 			description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-			quantity: 83,
-			raise: 99,
+			quantity: 0,
+			raise: 0,
 			units: 'sft',
 			vendors: [
 				{
+					total: 0,
+					id: nanoid(),
 					workType: '',
 					vendorCategory: '',
 					heading: '',
 					description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-					quantity: 13,
-					raise: 67,
+					quantity: 0,
+					raise: 0,
 					units: 'sft',
 				},
 			],
 			material: [
-				{
-					name: 'Carpenter',
-					item: '',
-					specification: '',
-				},
-				{
-					name: 'Plywood',
-					item: '',
-					rate: 0,
-				},
+				{id: nanoid(), name: 'Carpenter', item: '', specification: ''},
+				{id: nanoid(), name: 'Plywood', item: '', rate: 0},
 			],
-			milestones: [
-				{
-					name: '',
-					percentage: 0,
-				},
-			],
+			milestones: [{id: nanoid(), name: '', percentage: 0}],
 		},
 	],
 }
 export const componentData = {
+	id: nanoid(),
 	description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-	quantity: 47,
-	raise: 74,
+	quantity: 0,
+	raise: 0,
 	units: 'sft',
+	total: 0,
 	vendors: [
 		{
+			id: nanoid(),
 			workType: '',
 			vendorCategory: '',
 			heading: 'This is Heading',
 			description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-			quantity: 65,
-			raise: 79,
+			quantity: 0,
+			raise: 0,
+			total: 0,
 			units: 'sft',
 		},
 	],
 	material: [
-		{
-			name: 'Carpenter',
-			item: '',
-			specification: '',
-		},
-		{
-			name: 'Plywood',
-			item: '',
-			rate: 0,
-		},
+		{id: nanoid(), name: 'Carpenter', item: '', specification: ''},
+		{id: nanoid(), name: 'Plywood', item: '', rate: 0},
 	],
-	milestones: [
-		{
-			name: '',
-			percentage: 0,
-		},
-	],
+	milestones: [{id: nanoid(), name: '', percentage: 0}],
 }
 export const vendorData = {
+	id: nanoid(),
 	workType: '',
 	vendorCategory: '',
 	heading: '',
 	description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-	quantity: 64,
-	raise: 60,
+	quantity: 0,
+	raise: 0,
 	units: 'sft',
+	total: 0,
 }
-
+export const milestoneData = {id: nanoid(), name: '', percentage: 0}
 export const data = [
 	{
 		id: 393995599478784,
@@ -95,18 +82,20 @@ export const data = [
 					{
 						id: 6702441066135552,
 						description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-						quantity: 68,
-						raise: 70,
+						quantity: 0,
+						raise: 0,
+						total: 0,
 						units: 'sft',
 						vendors: [
 							{
+								total: 0,
 								id: 562619268202496,
 								workType: '',
 								vendorCategory: '',
 								heading: 'This is Heading',
 								description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-								quantity: 76,
-								raise: 58,
+								quantity: 0,
+								raise: 0,
 								units: 'sft',
 							},
 						],
@@ -140,10 +129,11 @@ export const data = [
 				name: 'Unit 2',
 				components: [
 					{
+						total: 0,
 						id: 7644018781454336,
 						description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-						quantity: 15,
-						raise: 51,
+						quantity: 0,
+						raise: 0,
 						units: 'sft',
 						vendors: [
 							{
@@ -152,8 +142,9 @@ export const data = [
 								vendorCategory: '',
 								heading: '',
 								description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-								quantity: 30,
-								raise: 67,
+								quantity: 0,
+								total: 0,
+								raise: 0,
 								units: 'sft',
 							},
 						],
@@ -192,10 +183,11 @@ export const data = [
 				name: 'Unit 2',
 				components: [
 					{
+						total: 0,
 						id: 3695885680640000,
 						description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-						quantity: 27,
-						raise: 88,
+						quantity: 0,
+						raise: 0,
 						units: 'sft',
 						vendors: [
 							{
@@ -204,8 +196,9 @@ export const data = [
 								vendorCategory: '',
 								heading: '',
 								description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-								quantity: 83,
-								raise: 57,
+								quantity: 0,
+								total: 0,
+								raise: 0,
 								units: 'sft',
 							},
 						],
@@ -246,8 +239,9 @@ export const data = [
 					{
 						id: 6813241334300672,
 						description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-						quantity: 56,
-						raise: 68,
+						quantity: 0,
+						total: 0,
+						raise: 0,
 						units: 'sft',
 						vendors: [
 							{
@@ -256,8 +250,9 @@ export const data = [
 								vendorCategory: '',
 								heading: '',
 								description: `Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media? We think that most viral web-based applications use far too much XSL, and not enough OWL. We think we know that it is better to streamline magnetically than to revolutionize transparently. Without development, you will lack architectures. The capacity to enable perfectly leads to the awards page of the customer journey. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the ability to whiteboard without lessening our aptitude to evolve without decreasing our power to aggregate. Our functionality is unparalleled, but our newbie-proof administration and simple configuration. What do we incubate? Anything and everything, regardless of obscureness! Our feature set is unmatched in the industry, but our granular integrated, value-added convergence and easy configuration is always considered a terrific achievement. The capability to implement wirelessly leads to the ability to iterate virtually. Spriti introduced new capabilities of the customer journey. Without C2C, you will lack social networks. What does the industry jargon '60/24/7/365' really mean? The capacity to enable perfectly leads to the awards page of the customer journey. The capacity to enable perfectly leads to the capacity to harness without devaluing our power to deliver.`,
-								quantity: 25,
-								raise: 56,
+								quantity: 0,
+								total: 0,
+								raise: 0,
 								units: 'sft',
 							},
 						],
@@ -290,19 +285,19 @@ export const data = [
 ]
 
 export interface RoomType {
-	id: number
+	id: number | string
 	name: string
 	units: UnitType[]
 }
 
 export interface UnitType {
-	id: number
+	id: number | string
 	name: string
 	components: ComponentType[]
 }
 
 export interface ComponentType {
-	id: number
+	id: number | string
 	description: string
 	quantity: number
 	raise: number
@@ -310,21 +305,23 @@ export interface ComponentType {
 	vendors: VendorType[]
 	material: MaterialType[]
 	milestones: MilestoneType[]
+	total: number
 }
 
 export interface VendorType {
-	id: number
+	id: number | string
 	workType: string
 	vendorCategory: string
 	heading: string
 	description: string
 	quantity: number
+	total: number
 	raise: number
 	units: string
 }
 
 export interface MaterialType {
-	id: number
+	id: number | string
 	name: string
 	item: string
 	specification?: string
@@ -332,7 +329,7 @@ export interface MaterialType {
 }
 
 export interface MilestoneType {
-	id: number
+	id: number | string
 	name: string
 	percentage: number
 }
